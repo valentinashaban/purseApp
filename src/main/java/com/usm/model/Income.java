@@ -25,7 +25,7 @@ public class Income extends Base {
 
 	public Income() {}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_user")
 	@NotNull
 	public User getUser() {
@@ -36,7 +36,7 @@ public class Income extends Base {
 		this.user = user;
 	}
 
-	@OneToOne(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_wherefrom")
 	public Wherefrom getWherefrom() {
 		return wherefrom;

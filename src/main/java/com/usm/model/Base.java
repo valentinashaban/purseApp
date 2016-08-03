@@ -5,7 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import javax.validation.constraints.NotNull;
 
 @MappedSuperclass
 public class Base {
@@ -15,9 +14,8 @@ public class Base {
 	public Base() {}
 	
 	@Id
-	@Column
-	@NotNull
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column
 	public Long getId() {
 		return id;
 	}

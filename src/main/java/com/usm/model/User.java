@@ -45,7 +45,7 @@ public class User extends Base {
 		this.password = password;
 	}
 
-	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 	public Set<Wherefrom> getWherefroms() {
 		return wherefroms;
 	}
@@ -54,7 +54,7 @@ public class User extends Base {
 		this.wherefroms = wherefroms;
 	}
 
-	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 	public Set<Domain> getDomains() {
 		return domains;
 	}
@@ -63,7 +63,7 @@ public class User extends Base {
 		this.domains = domains;
 	}
 
-	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 	public Set<Income> getIncomes() {
 		return incomes;
 	}
@@ -72,13 +72,18 @@ public class User extends Base {
 		this.incomes = incomes;
 	}
 
-	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 	public Set<Expense> getExpenses() {
 		return expenses;
 	}
 
 	public void setExpenses(Set<Expense> expenses) {
 		this.expenses = expenses;
+	}
+
+	@Override
+	public String toString() {
+		return "User [login=" + login + ", password=" + password + "]";
 	}
 
 }

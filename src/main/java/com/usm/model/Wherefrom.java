@@ -23,7 +23,7 @@ public class Wherefrom extends Base {
 		this.wherefrom = wherefrom;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_user")
 	@NotNull
 	public User getUser() {
