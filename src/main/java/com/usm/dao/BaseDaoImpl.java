@@ -15,7 +15,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		this.type = type;
 	}
 
-	private Session getSession() {
+	protected Session getSession() {
 		return HibernateUtil.getSessionFactory().openSession();
 	}
 
