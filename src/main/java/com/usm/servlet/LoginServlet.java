@@ -10,35 +10,38 @@ import javax.servlet.http.HttpServletResponse;
 import com.usm.config.Factory;
 import com.usm.model.User;
 
-@WebServlet(name = "UserServlet", urlPatterns = "/UserServlet")
-public class UserServlet extends HttpServlet {
+@WebServlet
+public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public UserServlet() {
+	public LoginServlet() {
 		super();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		if (null != (User) request.getSession().getAttribute("user"))
+			response.sendRedirect("profile.jsp");
+		else
+			response.sendRedirect("login.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		System.out.println("doPost");
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
-		
-		String page = "error.jsp";
+
+		String page = "login.jsp";
 		if (login.isEmpty() || password.isEmpty())
-			page = "error.jsp";
-		
+			page = "login.jsp";
+
 		Factory factory = Factory.getInstance();
 		User user = factory.getUserDao().findByLogin(login);
-		
+
 		if (null != user && user.getPassword().equals(password)) {
 			request.getSession().setAttribute("user", user);
-			page = "success.jsp";
+			page = "profile.jsp";
 		}
 		response.sendRedirect(page);
 	}

@@ -6,20 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Home Page</title>
+<jsp:include page="components/styles.html" />
 </head>
 <body>
-	<form action="UserServlet" method="POST" class="login-form">
-		<label>Login: <input id="login" type="text" name="login"
-			placeholder="Enter your login here" /></label>
-			
-		<br>
-		<br>
-		<label>Password: <input
-			id="password" type="password" name="password"
-			placeholder="Enter your password here" /></label>
-		
-		<br>
-		<button type="submit">Log In</button>
-	</form>
+	<div class="container">
+		<div class="row">
+			<jsp:include page="components/header.jsp" />
+		</div>
+	</div>
+	<jsp:include page="components/scripts.jsp" />
 </body>
 </html>
