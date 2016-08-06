@@ -23,6 +23,11 @@ public class User extends Base {
 
 	public User() {}
 
+	public User(String login, String password) {
+		this.login = login;
+		this.password = password;
+	}
+
 	@Column
 	@NotNull(message = "This field is required.")
 	@Size(min = 6, max = 50, message = "Login length should be between 6 and 50.")

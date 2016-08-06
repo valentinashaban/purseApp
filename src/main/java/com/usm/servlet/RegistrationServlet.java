@@ -11,34 +11,34 @@ import com.usm.config.Factory;
 import com.usm.model.User;
 import com.usm.service.UserService;
 
-@WebServlet(name = "LoginServlet", urlPatterns = "/login")
-public class LoginServlet extends HttpServlet {
+@WebServlet(name = "RegistrationServlet", urlPatterns = "/registration")
+public class RegistrationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public LoginServlet() {}
+	public RegistrationServlet() {}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getSession().removeAttribute("error");
-		UserService.loadPage(request, response, "login.jsp");
+		UserService.loadPage(request, response, "registration.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String login = request.getParameter("ulogin");
-		String password = request.getParameter("upassword");
+		String login = request.getParameter("rlogin");
+		String password = request.getParameter("rpassword");
 
-		String page = "login.jsp";
+		String page = "registration.jsp";
 
 		Factory factory = Factory.getInstance();
-		User user = factory.getUserDao().findByLogin(login);
 
-		if (null != user && user.getPassword().equals(password)) {
+		if (null != factory.getUserDao().findByLogin(login)) {
+			request.getSession().setAttribute("error", "User with this login does exist");
+		} else {
+			User user = new User(login, password);
+			factory.getUserDao().save(user);
 			request.getSession().setAttribute("user", user);
 			page = "profile.jsp";
-		} 
-		else
-			request.getSession().setAttribute("error", "User doesn't exist or password is wrong");
+		}
 		response.sendRedirect(page);
 	}
 

@@ -7,18 +7,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.usm.model.User;
+import com.usm.service.UserService;
 
-@WebServlet(name = "LogoutServlet", urlPatterns = "/logout")
-public class LogoutServlet extends HttpServlet {
+@WebServlet(name = "ProfileServlet", urlPatterns = "/profile")
+public class ProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public LogoutServlet() {}
+
+    public ProfileServlet() {}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (null != (User) request.getSession().getAttribute("user"))
-			request.getSession().removeAttribute("user");
-		response.sendRedirect("index.jsp");
+		UserService.loadPage(request, response, "login.jsp");
 	}
 
 }
