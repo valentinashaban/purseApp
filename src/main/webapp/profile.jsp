@@ -6,15 +6,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Authentication Successful</title>
-<jsp:include page="components/styles.html" />
+<jsp:include page="components/styles.jsp" />
 </head>
 <body>
+	<jsp:include page="components/header.jsp" />
+	
+	<main>
 	<div class="container">
 		<div class="row">
-			<jsp:include page="components/header.jsp" />
+			
 			<h1 class="center-align">Welcome, ${user.login}!</h1>
 		</div>
 	</div>
-	<jsp:include page="components/scripts.jsp" />
+	</main>
+	
+	<jsp:include page="components/footer.jsp" />
 </body>
 </html>

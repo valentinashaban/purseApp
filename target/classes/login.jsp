@@ -7,17 +7,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Home Page</title>
-<jsp:include page="components/styles.html" />
+<title>Login Page</title>
+<jsp:include page="components/styles.jsp" />
 </head>
 <body>
+	<jsp:include page="components/header.jsp" />
+	
+	<main>
 	<div class="container">
 		<div class="row">
-
-			<jsp:include page="components/header.jsp" />
-
 			<div class="row"></div>
-
 			<form class="col s12" id="login-form" method="POST"
 				action="${contextPath}/login" novalidate="novalidate">
 				<div class="center-align red-text text-darken-1">${error}</div>
@@ -51,7 +50,8 @@
 			</form>
 		</div>
 	</div>
-
-	<jsp:include page="components/scripts.jsp" />
+	</main>
+	
+	<jsp:include page="components/footer.jsp" />
 </body>
 </html>

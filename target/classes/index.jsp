@@ -6,14 +6,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Home Page</title>
-<jsp:include page="components/styles.html" />
+<jsp:include page="components/styles.jsp" />
 </head>
 <body>
-	<div class="container">
-		<div class="row">
-			<jsp:include page="components/header.jsp" />
-		</div>
-	</div>
-	<jsp:include page="components/scripts.jsp" />
+	<jsp:include page="components/header.jsp" />
+
+	<main>
+	<div class="container"></div>
+	</main>
+	
+	<jsp:include page="components/footer.jsp" />
 </body>
 </html>
